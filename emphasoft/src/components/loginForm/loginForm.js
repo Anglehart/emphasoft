@@ -1,7 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import './loginForm.css';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 const LoginForm = (props) => {
@@ -45,10 +45,6 @@ const LoginForm = (props) => {
           type="password"
           placeholder="Password"
         />
-      </Form.Item>
-
-      <Form.Item name="remember" valuePropName="checked">
-        <Checkbox>Remember me</Checkbox>
       </Form.Item>
 
       <Form.Item>
