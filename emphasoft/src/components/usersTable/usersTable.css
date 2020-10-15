@@ -1,0 +1,12 @@
+.ant-table-wrapper {
+  padding: 15px;
+}
+.ant-table {
+  overflow-x: auto;
+}
+.ant-table-cell {
+  max-width: 300px;
+}
+.last_login_col {
+  white-space: nowrap;
+}

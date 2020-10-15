@@ -16,7 +16,7 @@ class NetworkService {
       if (res.status === 200) {
         return res.json();
       }
-      return false;
+      return res.status;
     })
   }
   

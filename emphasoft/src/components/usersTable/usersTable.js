@@ -1,5 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
+import './usersTable.css';
 import { Table, Input, Button, Space, Tag } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
@@ -109,14 +110,6 @@ const columns = [
           },
   },
   {
-    title: 'Last Login',
-    dataIndex: 'last_login',
-    render: last_login => {
-      const d = new Date(last_login);
-      return last_login && d.toDateString();
-    }
-  },
-  {
     title: 'Superuser?',
     dataIndex: 'is_superuser',
     render: is_superuser => {
@@ -131,6 +124,15 @@ const columns = [
             }
             return (<Tag color={color} key={is_superuser}>{word}</Tag>);
           },
+  },
+  {
+    title: 'Last Login',
+    dataIndex: 'last_login',
+    className: 'last_login_col',
+    render: last_login => {
+      const d = new Date(last_login);
+      return last_login && d.toDateString();
+    }
   }
 ];
 
