@@ -21,7 +21,6 @@ class NetworkService {
   }
 
   getAllUsers(token) {
-    console.log(token)
     return fetch(this.getAllUrl, {
       method: 'GET',
       headers: {

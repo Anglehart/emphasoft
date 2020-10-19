@@ -8,7 +8,7 @@ import './App.css';
 
 function App() {
   const [users, setUsers] = React.useState([]);
-  const [isLogin, setIsLogin] = React.useState(false);
+  const [isLogin, setIsLogin] = React.useState();
 
   function onFinish(values) {
     networkService.authorization(values)
@@ -19,20 +19,13 @@ function App() {
       storageService.setToken(data.token);
       return data;
     })
-    .then((data) => getTableData())
+    .then(() => setIsLogin(true))
     .catch((err) => showMessage(err))
   };
-
-  function getTableData() {
-    const token = storageService.getToken();
-    networkService.getAllUsers(token)
-    .then((res) => {
-      if (!res) return Promise.reject(res);
-      console.log(res);
-    })
-    .then(() => setIsLogin(true))
-    .then(res => setUsers(res))
-    .catch((err) => showMessage('invalid token'))
+  
+  function onLogOut(){
+    setIsLogin(false);
+    storageService.setToken('');
   }
 
   function showMessage(err) {
@@ -42,18 +35,30 @@ function App() {
     Modal.error({
       content: message,
     })
+    
   }
 
   React.useEffect(() => {
-    getTableData();
-  })
+    const token = storageService.getToken();
+    if (token) {
+      networkService.getAllUsers(token)
+      .then((res) => {
+        if (!res) return Promise.reject(res);
+        setUsers(res);
+        setIsLogin(true);
+      })
+      .catch(() => {
+        setIsLogin(false);
+      })
+    } else {
+      setIsLogin(false);
+    }
+  }, [isLogin])
 
   return (
     <div className="App">
-      {isLogin
-        ?<UsersTable users={users}/>
-        :<LoginForm onFinish={onFinish}/>
-      }
+      {isLogin === true && <UsersTable users={users} onLogOut={onLogOut}/>}
+      {isLogin === false && <LoginForm onFinish={onFinish}/>}
     </div>
   );
 }

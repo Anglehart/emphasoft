@@ -1,5 +1,9 @@
-.ant-table-wrapper {
+.table-wrapper {
   padding: 15px;
+}
+.table-wrapper button {
+  float: right;
+  margin-bottom: 20px;
 }
 .ant-table {
   overflow-x: auto;

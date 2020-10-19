@@ -137,7 +137,10 @@ const columns = [
 ];
 
 return(
-  <Table columns={columns} dataSource={props.users} rowKey="id" />
+  <div className="table-wrapper">
+    <Button onClick={props.onLogOut}>Log Out</Button>
+    <Table columns={columns} dataSource={props.users} rowKey="id" />
+  </div>
 )
 }
 
