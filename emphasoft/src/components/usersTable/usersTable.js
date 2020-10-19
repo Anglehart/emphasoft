@@ -9,7 +9,7 @@ const UsersTable = (props) => {
   const [searchText, setSearchText] = React.useState('');
   const [searchedColumn, setSearchedColumn] = React.useState('');
   let searchInput = '';
-  
+
   const getColumnSearchProps = dataIndex => ({
     filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
       <div style={{ padding: 8 }}>
@@ -100,10 +100,10 @@ const columns = [
             let color = '';
             let word = '';
             if (is_active) {
-              color = 'green'; 
+              color = 'green';
               word = 'Yes'
             } else {
-              color = 'red'; 
+              color = 'red';
               word = 'No'
             }
             return (<Tag color={color} key={is_active}>{word}</Tag>);
@@ -116,10 +116,10 @@ const columns = [
             let color = '';
             let word = '';
             if (is_superuser) {
-              color = 'green'; 
+              color = 'green';
               word = 'Yes'
             } else {
-              color = 'red'; 
+              color = 'red';
               word = 'No'
             }
             return (<Tag color={color} key={is_superuser}>{word}</Tag>);
